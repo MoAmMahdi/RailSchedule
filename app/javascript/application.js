@@ -3,19 +3,22 @@ import "@hotwired/turbo-rails"
 import "controllers"
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Select all the schedule cells
+    
+    // get all cells on the grid
     const cells = document.querySelectorAll("#schedule-grid .cell");
 
-    // Add click event listeners to each cell
+  
     cells.forEach(cell => {
         cell.addEventListener("click", function() {
+          
             const startHour = parseInt(cell.getAttribute("data-hour"));
             const technicianId = cell.getAttribute("data-technician-id");
 
             let previousPlanEndTime = null;
             let nextPlanStartTime = null;
-
-            // Traverse previous hours to find the end of the previous plan
+        
+            // loop through and find the previous plan (plan above clicked point)
+    
             for (let hour = startHour - 1; hour >= 0; hour--) {
                 const previousCell = document.querySelector(`.cell[data-hour="${hour}"][data-technician-id="${technicianId}"]`);
                 if (previousCell && previousCell.querySelector(".plan")) {
@@ -31,7 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
 
-            // Traverse next hours to find the start of the next plan
+            // loop through and find the next plan (plan below clicked point)
+   
             for (let hour = startHour; hour <= 23; hour++) {
                 const currentCell = document.querySelector(`.cell[data-hour="${hour}"][data-technician-id="${technicianId}"]`);
                 if (currentCell && currentCell.querySelector(".plan")) {
@@ -50,13 +54,18 @@ document.addEventListener("DOMContentLoaded", function() {
             let freeTimeMinutes = 0;
             let freeTimeHours = 0;
 
-            // Calculate free time based on found times
+            // calculate time available
+           
+            // case where we don't have any plans above clicked point
+           
             if (previousPlanEndTime && nextPlanStartTime) {
                 freeTimeMinutes = Math.abs((nextPlanStartTime - previousPlanEndTime) /  60000); // Convert milliseconds to minutes
                 freeTimeHours = Math.round(freeTimeMinutes / 60)
                 freeTimeMinutes = Math.round(freeTimeMinutes % 60)
                 alert(`Free time available: ${freeTimeHours} hours(s) ${freeTimeMinutes} minute(s)`);
             } 
+            
+            // case where we don't have any plans below clicked point
             
             else if (previousPlanEndTime) {
                 console.log(previousPlanEndTime)
@@ -67,18 +76,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 freeTimeMinutes = Math.round(freeTimeMinutes % 60)
                 alert(`Free time available: ${freeTimeHours} hours(s) ${freeTimeMinutes} minute(s)`);
             } 
+
+            // case where we don't have any plans above clicked point
             
             else if (nextPlanStartTime) {
-                console.log("Next: ", nextPlanStartTime)
+                // console.log("Next: ", nextPlanStartTime)
                 const startOfDay = new Date();
-                startOfDay.setHours(0, 0, 0, 0); // Start of the day
-                console.log(startOfDay)
+                startOfDay.setHours(0, 0, 0, 0); // 12 AM, start of grid
+                // console.log(startOfDay)
                 freeTimeMinutes = Math.abs((nextPlanStartTime - startOfDay) / 60000); // Convert milliseconds to minutes
                 freeTimeHours = Math.round(freeTimeMinutes / 60)
                 freeTimeMinutes = Math.round(freeTimeMinutes % 60)
-                alert(`Free time available: ${freeTimeHours} hours(s) ${freeTimeMinutes} minute(s)`);
+                alert(`Free time available: ${freeTimeHours} hours(s) ${freeTimeMinutes} minute(s)`); 
             } 
-            
+            // If we ever get here, that's nuts
             else {
                 alert('No plans found for this technician in the selected hour.');
             }
