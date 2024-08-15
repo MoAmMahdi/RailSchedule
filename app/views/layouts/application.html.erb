@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Schedule" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <div id="schedule-grid">
+  <div class="technicians">
+    <% @technicians.each do |technician| %>
+      <div class="column">
+        <div class="header"><%= technician.name %></div>
+        <% (0..23).each do |hour| %>
+          <div class="cell" data-hour="<%= hour %>" data-technician-id="<%= technician.id %>">
+         <div class="time-label"><%= Time.new(2000, 1, 1, hour).strftime("%-I %p") %></div>
+            <% @plan.each do |plan| %>
+              <% if plan.technician_id == technician.id && plan.time.hour == hour %>
+                <div class="plan" style="top: <%= (plan.time.min / 60.0 * 100).round %>%" data-start-time="<%= plan.time.strftime('%-H:%M') %>" data-end-time="<%= (plan.time + plan.duration.minutes).strftime('%-H:%M') %>">
+                <div><%= plan.location.name %></div>
+                <div><%= plan.location.city %></div>
+                <div><%= plan.time.strftime("%-I:%M %p") %></div>
+                <div>$<%= plan.price %></div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+  </body>
+</html>

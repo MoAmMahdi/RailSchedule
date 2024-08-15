@@ -1,0 +1,50 @@
+
+#schedule-grid {
+  display: flex;
+  flex-direction: column; 
+  height: 100vh;         
+  width: 100vw;               
+  }
+
+
+  
+.technicians {
+    display: flex;
+  }
+  
+.column {
+    flex: 1;
+    border-right: 1px solid #ccc;
+    position: relative;
+  }
+  
+.header {
+    background: #f0f0f0;
+    text-align: center;
+    padding: 10px;
+  }
+  
+.cell {
+    border-top: 1px solid #ccc;
+    height: 50px;
+    position: relative;
+  }
+  
+.plan {
+    position: relative;
+    background: #ff0;
+    padding: 2px;
+    border: 1px solid #000;
+  }
+.plan:hover {
+  z-index: 3;
+}
+  
+.time-label{
+    font-size: 15px; 
+    font-weight: bolder;
+    align-items: center;
+    position: absolute;
+    right:0;
+    color: rgba(0,0,0,.3);  
+}
