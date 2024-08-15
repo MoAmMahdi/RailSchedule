@@ -1,12 +1,11 @@
 # README
 
-* Ruby version
+Ruby version
+---------------------
+ruby 3.3.3 
 
-* ruby 3.3.3 
-
-* Database creation:
-======================
-
+Database creation
+---------------------
   run the command
   ```
   rails db:create
@@ -24,4 +23,6 @@
   in order to import from the csv files
 
 
-* Reflection
+Reflection
+---------------------
+My approach to designing this application was familiarizing myself with Ruby on Rails, as this was my first ever application written in this language. I aimed for simplicity as I wanted to make sure I met the requirements expected of me. Problems I faced were figuring out the time calculations.
