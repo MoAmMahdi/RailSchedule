@@ -1,10 +1,13 @@
 # README
 
 * Ruby version
+======================
   ruby 3.3.3 
 
-* Database creation
-  run 
+* Database creation:
+======================
+
+  run the command
   ```
   rails db:create
   ```
