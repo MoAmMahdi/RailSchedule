@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version
-
-* System dependencies
-
-* Configuration
+  ruby 3.3.3 
 
 * Database creation
+  run 
+  ```
+  rails db:create
+  ```
+  to create the database
 
-* Database initialization
+  then
+  ```
+  rails db:migrate
+  ```
+  and finally the rake task 
+  ```
+  rake import:import_csv
+  ```
+  in order to import from the csv files
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Reflection
