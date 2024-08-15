@@ -4,4 +4,3 @@ class ScheduleController < ApplicationController
     @plan = Plan.includes(:location).order(:time)
   end
 end
-

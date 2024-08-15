@@ -12,6 +12,4 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "schedule#index"
   get "/schedule", to: "schedule#index"
-
-  
 end
