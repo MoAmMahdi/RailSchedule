@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 freeTimeMinutes = Math.abs((nextPlanStartTime - previousPlanEndTime) / 60000); // Convert milliseconds to minutes
                 freeTimeHours = Math.round(freeTimeMinutes / 60)
                 freeTimeMinutes = Math.round(freeTimeMinutes % 60)
-                alert(`Free time available: ${freeTimeHours} hours(s) ${freeTimeMinutes} minute(s)`);
+                alert(`Time available: ${freeTimeHours} hours(s) ${freeTimeMinutes} minute(s)`);
             }
 
             // case where we don't have any plans below clicked point
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 freeTimeMinutes = Math.abs((endOfDay - previousPlanEndTime) / 60000); // Convert milliseconds to minutes
                 freeTimeHours = Math.round(freeTimeMinutes / 60)
                 freeTimeMinutes = Math.round(freeTimeMinutes % 60)
-                alert(`Free time available: ${freeTimeHours} hours(s) ${freeTimeMinutes} minute(s)`);
+                alert(`Time available: ${freeTimeHours} hours(s) ${freeTimeMinutes} minute(s)`);
             }
 
             // case where we don't have any plans above clicked point
@@ -80,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 freeTimeMinutes = Math.abs((nextPlanStartTime - startOfDay) / 60000); // Convert milliseconds to minutes
                 freeTimeHours = Math.round(freeTimeMinutes / 60)
                 freeTimeMinutes = Math.round(freeTimeMinutes % 60)
-                alert(`Free time available: ${freeTimeHours} hours(s) ${freeTimeMinutes} minute(s)`);
+                alert(`Time available: ${freeTimeHours} hours(s) ${freeTimeMinutes} minute(s)`);
             }
             // If we ever get here, that's nuts
             else {
-                alert('No plans found for this technician in the selected hour.');
+                alert('No time found');
             }
         });
     });
