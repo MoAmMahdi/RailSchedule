@@ -21,7 +21,7 @@ namespace :import do
             location_id: data["location_id"],
             time: data["time"],
             duration: data["duration"].to_i, # to_i makes string to intege
-            price: data["price"].to_i)        
+            price: data["price"].to_i)
         end
     end
 end
