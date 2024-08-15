@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "net-protocol', '>= 0'
+gem "net-protocol", '>= 0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.0.beta2"
