@@ -1,40 +1,40 @@
 
-#schedule-grid {
+#schedule-grid { 
   display: flex;
   flex-direction: column; 
   height: 100vh;         
   width: 100vw;               
   }
 
-
-  
 .technicians {
     display: flex;
   }
   
 .column {
     flex: 1;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid rgb(204,204,204);
     position: relative;
   }
   
 .header {
-    background: #f0f0f0;
+    background: rgb(240,240,240);
     text-align: center;
     padding: 10px;
   }
   
 .cell {
-    border-top: 1px solid #ccc;
+    border-top: 0.5px solid rgb(204,204,204);
     height: 50px;
     position: relative;
   }
   
 .plan {
+    border-radius: 5px;
     position: relative;
-    background: #ff0;
+    background: rgb(255, 179, 0);
     padding: 2px;
-    border: 1px solid #000;
+    border: 1px solid  rgb(0,0,0);
+    filter: drop-shadow(grey 1rem 1rem 10px);
   }
 .plan:hover {
   z-index: 3;
@@ -42,9 +42,9 @@
   
 .time-label{
     font-size: 15px; 
-    font-weight: bolder;
     align-items: center;
     position: absolute;
     right:0;
-    color: rgba(0,0,0,.3);  
+    color: rgba(100,100,100,.3); 
+    z-index: 4;
 }
