@@ -1,8 +1,8 @@
 # README
 
 * Ruby version
-======================
-  ruby 3.3.3 
+
+* ruby 3.3.3 
 
 * Database creation:
 ======================
